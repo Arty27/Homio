@@ -1,10 +1,10 @@
 {
   "expo": {
-    "name": "React-Native",
+    "name": "Homio",
     "slug": "React-Native",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/images/icon.png",
+    "icon": "./assets/images/Homio.png",
     "scheme": "reactnative",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
@@ -23,7 +23,8 @@
     },
     "web": {
       "output": "static",
-      "favicon": "./assets/images/favicon.png"
+      "favicon": "./assets/images/favicon.png",
+      "bundler": "metro"
     },
     "plugins": [
       "expo-router",
