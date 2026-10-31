@@ -12,6 +12,8 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
+import ImageViewing from "react-native-image-viewing";
+
 import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function Profile() {
@@ -19,6 +21,8 @@ export default function Profile() {
   const { user, isLoaded } = useUser();
   const { signOut } = useAuth();
   const [isUpdating, setIsUpdating] = useState(false);
+  const [imageViewerVisible, setImageViewerVisible] = useState(false);
+
   const handleSignOut = async () => {
     try {
       await signOut();
@@ -84,10 +88,12 @@ export default function Profile() {
       {/* Avatar + Name */}
       <View className="items-center py-8">
         <View className="relative">
-          <Image
-            source={{ uri: user.imageUrl }}
-            className="w-24 h-24 rounded-full mb-4"
-          />
+          <TouchableOpacity onPress={() => setImageViewerVisible(true)}>
+            <Image
+              source={{ uri: user.imageUrl }}
+              className="w-24 h-24 rounded-full mb-4"
+            />
+          </TouchableOpacity>
           <TouchableOpacity
             onPress={handleUpdateProfileImage}
             className="absolute bottom-3 right-0 bg-blue-600 rounded-full p-2"
@@ -147,6 +153,12 @@ export default function Profile() {
           <Text className="text-red-500 font-semibold text-base">Sign Out</Text>
         </TouchableOpacity>
       </View>
+      <ImageViewing
+        images={[{ uri: user.imageUrl }]}
+        imageIndex={0}
+        visible={imageViewerVisible}
+        onRequestClose={() => setImageViewerVisible(false)}
+      />
     </SafeAreaView>
   );
 }
