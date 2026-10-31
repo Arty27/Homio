@@ -92,7 +92,7 @@ export default function HomeScreen() {
 
             {/* Search Bar */}
             <TouchableOpacity
-              onPress={() => {}}
+              onPress={() => router.push("/(root)/(tabs)/search")}
               className="mx-5 mb-6 flex-row items-center bg-white rounded-2xl px-4 py-3 gap-3"
               style={{
                 shadowColor: "#000",
@@ -107,7 +107,9 @@ export default function HomeScreen() {
                 Search properties, cities...
               </Text>
               <TouchableOpacity
-                onPress={() => {}}
+                onPress={() =>
+                  router.push("/(root)/(tabs)/search?openFilters=true")
+                }
                 className="w-8 h-8 bg-blue-600 rounded-xl items-center justify-center"
               >
                 <Ionicons name="options-outline" size={15} color={"white"} />
